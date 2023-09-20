@@ -1,6 +1,6 @@
-const API_URL = process.env.BASE_API_URL
+const API_URL = process.env.BASE_API_URL;
 
-const authString = `apiKey=${process.env.API_KEY}`
+const authString = `apiKey=${process.env.API_KEY}`;
 
 const fetchApi = async (endpoint: string, urlParams?: string) => {
   const url = `${API_URL}/${endpoint}?${authString}&${urlParams || ""}`;
@@ -8,9 +8,15 @@ const fetchApi = async (endpoint: string, urlParams?: string) => {
   return await response.json();
 };
 
-export async function getRandomRecipes(number?: number) {
-  const params = new URLSearchParams()
-  if(number) params.set('number', `${number}`)
-  console.log(params.toString())
-  return await fetchApi('/recipes/random', params.toString())
+export async function getRandomRecipes(number: number = 9): Promise<Recipe[]> {
+  const params = new URLSearchParams();
+  params.set("number", `${number}`);
+  const {recipes} = await fetchApi(
+    "/recipes/random",
+    params.toString()
+  );
+
+  console.log(recipes);
+
+  return recipes;
 }
