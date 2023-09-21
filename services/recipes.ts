@@ -15,8 +15,12 @@ export async function getRandomRecipes(number: number = 9): Promise<Recipe[]> {
     "/recipes/random",
     params.toString()
   );
-
-  console.log(recipes);
-
+  
   return recipes;
+}
+
+export async function getRecipeInformation(id: number): Promise<Recipe> {
+  const recipe = await fetchApi(`/recipes/${id}/information`)
+  
+  return recipe
 }

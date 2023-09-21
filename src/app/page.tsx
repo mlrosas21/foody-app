@@ -1,4 +1,4 @@
-import { getRandomRecipes } from "../../services/getData";
+import { getRandomRecipes } from "../../services/recipes";
 import styles from "./page.module.css";
 import Typography from "@mui/material/Typography";
 import RecipeCard from "./components/RecipeCard/RecipeCard";
