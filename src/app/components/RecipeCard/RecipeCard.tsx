@@ -7,6 +7,9 @@ import styles from "./styles.module.css";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import { RECIPE_FLAGS } from "@/constants/recipe";
+import {  Button, CardActions } from "@mui/material";
+import LikeButton from "../LikeButton/LikeButton";
+import Link from "next/link";
 
 type Props = {
   recipe: Recipe;
@@ -45,28 +48,22 @@ const RecipeCard = ({ recipe }: Props) => {
           sizes="100vw"
           style={{ width: "100%", height: "auto" }}
         />
-        <Box>{renderChips(recipeFlags)}</Box>
-        <Typography variant="h5" component="div">
+        <Box className={styles.cardChips}>{renderChips(recipeFlags)}</Box>
+        <Typography variant="h5" component="div" className={styles.cardTitle}>
           {recipe.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Servings: {recipe.servings}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Health Score: {recipe.healthScore}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Likes: {recipe.aggregateLikes}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Price Per Serving: ${recipe.pricePerServing.toFixed(2)}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" className={styles.cardSecondaryText}>
           <a href={recipe.sourceUrl} target="_blank" rel="noopener noreferrer">
             Source: {recipe.sourceName}
           </a>
         </Typography>
       </CardContent>
+      <CardActions className={styles.cardButtons}>
+        <LikeButton />
+        <Link href={`/recipes/${recipe.id}`}>
+          <Button>See more</Button>
+        </Link>
+      </CardActions>
     </Card>
   );
 };
