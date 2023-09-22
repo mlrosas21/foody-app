@@ -7,9 +7,10 @@ import styles from "./styles.module.css";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import { RECIPE_FLAGS } from "@/constants/recipe";
-import {  Button, CardActions } from "@mui/material";
+import { Button, CardActions } from "@mui/material";
 import LikeButton from "../LikeButton/LikeButton";
 import Link from "next/link";
+import { neuton } from "@/app/fonts";
 
 type Props = {
   recipe: Recipe;
@@ -40,23 +41,34 @@ const RecipeCard = ({ recipe }: Props) => {
   return (
     <Card className={styles.card}>
       <CardContent className={styles.cardContent}>
-        <Image
-          src={recipe.image}
-          alt={recipe.title}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: "100%", height: "auto" }}
-        />
+          <Image
+            src={recipe.image}
+            alt={recipe.title}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto"}}
+            className={styles.cardImage}
+          />
         <Box className={styles.cardChips}>{renderChips(recipeFlags)}</Box>
-        <Typography variant="h5" component="div" className={styles.cardTitle}>
-          {recipe.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" className={styles.cardSecondaryText}>
-          <a href={recipe.sourceUrl} target="_blank" rel="noopener noreferrer">
-            Source: {recipe.sourceName}
-          </a>
-        </Typography>
+        <Box className={styles.cardTextSection}>
+          <Typography variant="h4" component="div" className={`${styles.cardTitle} ${neuton.className}`}>
+            {recipe.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            className={styles.cardSecondaryText}
+          >
+            <a
+              href={recipe.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source: {recipe.sourceName}
+            </a>
+          </Typography>
+        </Box>
       </CardContent>
       <CardActions className={styles.cardButtons}>
         <LikeButton />
