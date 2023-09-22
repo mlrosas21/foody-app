@@ -19,7 +19,7 @@ function renderChips(flags: { [key: string]: boolean }) {
   const chips = [];
 
   for (const flag in flags) {
-    if (flag) {
+    if (flags[flag]) {
       chips.push(<Chip label={RECIPE_FLAGS[flag]} />);
     }
   }
