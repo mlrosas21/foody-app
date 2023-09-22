@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      <Typography variant="h1">Foody app</Typography>
+      <Typography variant="h1" className={styles.mainTitle}>Foody app</Typography>
       <Grid
         container
         columns={{ xs: 4, sm: 8, md: 12 }}
