@@ -14,7 +14,7 @@ type Props = {
 
 const IngredientsList = ({ ingredients }: Props) => {
   return (
-    <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <List dense sx={{ width: '100%', maxWidth: 360, minWidth: 225, bgcolor: 'background.paper' }}>
       {ingredients.map(async (ingredient) => {
         const url = await getIngredientImage(`SIZE_${250}`, ingredient.image);
         return (
