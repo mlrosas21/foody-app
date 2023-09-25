@@ -1,47 +1,42 @@
-import React from 'react'
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
-import Image from "next/image";
+import React from "react";
 import { getIngredientImage } from "services/ingredients";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import ListItemText from "@mui/material/ListItemText";
+import styles from './styles.module.css'
 
 type Props = {
-  ingredients: Ingredient[]
-}
+  ingredients: Ingredient[];
+};
 
-const IngredientsList = ({ingredients}: Props) => {
+const IngredientsList = ({ ingredients }: Props) => {
   return (
-    <ImageList sx={{ width: 250, height: 450 }}>
-          <ImageListItem key="Subheader" cols={2}>
-            <ListSubheader component="div">Ingedientes</ListSubheader>
-          </ImageListItem>
-
-          {ingredients.map(async (ingredient) => {
-            const width = 250;
-            const url = await getIngredientImage(
-              `SIZE_${width}`,
-              ingredient.image
-            );
-
-            return (
-              <ImageListItem key={ingredient.id}>
-                <Image
-                  key={ingredient.id}
+    <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {ingredients.map(async (ingredient) => {
+        const url = await getIngredientImage(`SIZE_${250}`, ingredient.image);
+        return (
+          <ListItem
+            key={ingredient.name}
+            disablePadding
+          >
+            <ListItemButton>
+              <ListItemAvatar>
+                <Avatar
                   alt={ingredient.name}
                   src={url}
-                  width={width}
-                  height={200}
+                  className={styles.ingredientAvatar}
                 />
-                <ImageListItemBar
-                  title={`${ingredient.amount} ${ingredient.unit}`}
-                  subtitle={ingredient.name}
-                />
-              </ImageListItem>
-            );
-          })}
-        </ImageList>
-  )
-}
+              </ListItemAvatar>
+              <ListItemText primary={`${ingredient.amount} ${ingredient.unit}`} secondary={` ${ingredient.name}`} className={styles.ingredientName} />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
+    </List>
+  );
+};
 
-export default IngredientsList
+export default IngredientsList;

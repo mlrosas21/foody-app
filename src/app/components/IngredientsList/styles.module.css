@@ -1,0 +1,7 @@
+.ingredientName{
+    color: black;
+}
+
+.ingredientAvatar > img{
+    object-fit: contain;
+}
