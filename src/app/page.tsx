@@ -17,7 +17,7 @@ export default async function Home() {
       >
         {recipes.map((recipe) => (
           <Grid xs={2} sm={4} md={4} key={recipe.id} display={"flex"} justifyContent={'center'}>
-            <RecipeCard recipe={recipe} />
+            <RecipeCard key={recipe.id} recipe={recipe} />
           </Grid> 
         ))}
       </Grid>

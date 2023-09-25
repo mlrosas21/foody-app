@@ -1,0 +1,52 @@
+.container {
+    padding: 0 12.5rem; 
+  
+    @media (max-width: 1200px) {
+      padding: 0 10rem;
+    }
+  
+    @media (max-width: 992px) {
+      padding: 0 5rem; 
+    }
+  
+    @media (max-width: 768px) {
+      padding: 0 2rem;
+    }
+  
+    @media (max-width: 576px) {
+      padding: 0 1rem;
+    }
+  }
+  
+
+.recipe{
+    max-width: 50vw;
+    flex: 1;
+}
+
+.imageContainer{
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    background-color: brown;
+    border-radius: 5px;
+}
+
+.image{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.recipeDetails{
+  display: flex;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.recipeDetails > * {
+  padding: 0 1rem;
+}
+
+.summary{
+  padding: 1rem;
+}
