@@ -9,6 +9,19 @@ import { neuton } from "@/app/fonts";
 import Link from "next/link";
 import Instructions from "@/app/components/Instructions/Instructions";
 
+const renderInlineList = (arr: string[], queryParam: string) => {
+  return (
+    <ul className={styles.inlineList}>
+      {arr.map((element: string, index: number) => (
+        <li key={element} className={styles.inlineList}>
+          <Link href={{ pathname: '/recipes/search', query: { [queryParam]: `${element}` } }}>{element}</Link>
+          {index < arr.length - 1 && <span> - </span>}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const RecipePage = async ({ params }: { params: { id: number } }) => {
   const { id } = params;
   const recipe = await getRecipeInformation(id);
@@ -21,14 +34,12 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
         {recipe.title}
       </Typography>
       <Typography variant="subtitle2">Credits: {recipe.creditsText}</Typography>
-      <ul>
-        {recipe.occasions.map((occasion) => (
-          <li key={occasion}>
-            <Link href="/">{occasion}</Link>
-          </li>
-        ))}
-      </ul>
-      <Box display={"flex"} width={1}>
+
+      {recipe.dishTypes.length > 0 && <Box className={styles.occasions}>{renderInlineList(recipe.dishTypes, 'type')}</Box>}
+
+      {/* {recipe.occasions.length > 0 && <Box className={styles.occasions}>{renderInlineList(recipe.occasions, )}</Box>} */}
+
+      <Box className={styles.recipeInfo}>
         <Box component={"section"} className={styles.recipe}>
           <div className={styles.imageContainer}>
             <Image
@@ -41,7 +52,9 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
               className={styles.image}
             />
           </div>
-          <Typography className={styles.summary}>{parser(recipe.summary)}</Typography>
+          <Typography className={styles.summary}>
+            {parser(recipe.summary)}
+          </Typography>
           <Box className={styles.recipeDetails}>
             <IngredientsList ingredients={recipe.extendedIngredients} />
             <Instructions instructions={recipe.analyzedInstructions[0].steps} />
