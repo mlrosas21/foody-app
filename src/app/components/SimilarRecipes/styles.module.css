@@ -1,4 +1,8 @@
 .similarRecipes{
+    display: flex;
+    flex-direction: column;
     flex: 0.25;
     background-color: rebeccapurple;
+    padding: 1rem;
+    gap: 1rem;
 }

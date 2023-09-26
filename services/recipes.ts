@@ -24,3 +24,16 @@ export async function getRecipeInformation(id: number): Promise<Recipe> {
   
   return recipe
 }
+
+export async function getSimilarRecipes(id: number, number: number = 5): Promise<Recipe[]> {
+  const params = new URLSearchParams();
+  params.set("number", `${number}`);
+  const recipes = await fetchApi(
+    `/recipes/${id}/similar`,
+    params.toString()
+  );
+
+  console.log(recipes)
+  
+  return recipes;
+}
