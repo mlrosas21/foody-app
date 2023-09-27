@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 200px;
+  width: 80%;
 }
 
 .cardContent{
@@ -22,7 +23,7 @@
 
 .cardTextSection{
   margin-top: auto;
-  height: 30%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,5 +45,15 @@
 
 .cardImage{
   flex: 0;
-  
+  max-width: 312px;
+  max-height: 231px;
+}
+
+.cardTitle{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 1.75rem;
 }
