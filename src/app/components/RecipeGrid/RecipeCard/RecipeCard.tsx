@@ -7,10 +7,10 @@ import styles from "./styles.module.css";
 import Box from "@mui/material/Box";
 import { RECIPE_FLAGS } from "@/constants/recipe";
 import { Button, CardActions } from "@mui/material";
-import LikeButton from "../LikeButton/LikeButton";
+import LikeButton from "../../LikeButton/LikeButton";
 import Link from "next/link";
 import { neuton } from "@/app/fonts";
-import CustomTextBadge from "../CustomTextBadge/CustomTextBadge";
+import CustomTextBadge from "../../CustomTextBadge/CustomTextBadge";
 
 type Props = {
   recipe: Recipe;

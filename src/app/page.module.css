@@ -5,13 +5,9 @@
   align-items: center;
 }
 
-.grid {
-  padding: 0 10rem;
-}
-
 @media screen and (max-width: 768px) {
   .grid {
-    padding: 0 5rem; 
+    padding: 0 5rem;
   }
 }
 
@@ -21,7 +17,6 @@
   }
 }
 
-
-.mainTitle{
+.mainTitle {
   margin-bottom: 2rem;
 }
