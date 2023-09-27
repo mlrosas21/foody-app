@@ -5,23 +5,23 @@ import Image from "next/image";
 import React from "react";
 import styles from "./styles.module.css";
 import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
 import { RECIPE_FLAGS } from "@/constants/recipe";
 import { Button, CardActions } from "@mui/material";
 import LikeButton from "../LikeButton/LikeButton";
 import Link from "next/link";
 import { neuton } from "@/app/fonts";
+import CustomTextBadge from "../CustomTextBadge/CustomTextBadge";
 
 type Props = {
   recipe: Recipe;
 };
 
-function renderChips(flags: { [key: string]: boolean }) {
+function renderBadges(flags: { [key: string]: boolean }) {
   const chips = [];
 
   for (const flag in flags) {
     if (flags[flag]) {
-      chips.push(<Chip label={RECIPE_FLAGS[flag]} />);
+      chips.push(<CustomTextBadge text={RECIPE_FLAGS[flag]}/>);
     }
   }
 
@@ -50,7 +50,7 @@ const RecipeCard = ({ recipe }: Props) => {
             style={{ width: "100%", height: "auto"}}
             className={styles.cardImage}
           />
-        <Box className={styles.cardChips}>{renderChips(recipeFlags)}</Box>
+        <Box className={styles.cardBadges}>{renderBadges(recipeFlags)}</Box>
         <Box className={styles.cardTextSection}>
           <Typography variant="h4" component="div" className={`${styles.cardTitle} ${neuton.className}`}>
             {recipe.title}
