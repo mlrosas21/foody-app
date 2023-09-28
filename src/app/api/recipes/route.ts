@@ -12,7 +12,9 @@ const fetchApi = async (endpoint: string, urlParams?: string) => {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   if(!searchParams.has("number")) searchParams.set("number", '9')
-  
+
+  searchParams.set("addRecipeInformation", "true")
+
   const recipes = await fetchApi(
     `/recipes/complexSearch`,
     searchParams.toString()
