@@ -32,8 +32,6 @@ export async function getSimilarRecipes(id: number, number: number = 5): Promise
     `/recipes/${id}/similar`,
     params.toString()
   );
-
-  console.log(recipes)
   
   return recipes;
 }
