@@ -4,42 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import NavDropdownMenu from "../NavDropdownMenu/NavDropdownMenu";
 import styles from "./styles.module.css";
-
-const staticLinks = [
-  {
-    label: "Home",
-    route: "/",
-  },
-  {
-    label: "About",
-    route: "/about",
-  },
-  {
-    label: "Recipes",
-    route: "/recipes",
-  },
-];
-
-const menuLinks = [
-  {
-    label: "Dish types",
-    param: "type",
-    items: [
-      {
-        label: "Main course",
-        value: "main course",
-      },
-      {
-        label: "Side dish",
-        value: "side dish"
-      },
-      {
-        label: "Dessert",
-        value: "dessert"
-      }
-    ],
-  },
-];
+import { staticLinks, menuLinks } from "utils/links";
 
 const NavBar = () => {
   return (
