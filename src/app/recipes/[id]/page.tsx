@@ -41,7 +41,6 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
 
       <Box className={styles.recipeInfo}>
         <Box component={"section"} className={styles.recipe}>
-          <div className={styles.imageContainer}>
             <Image
               alt={recipe.title}
               src={recipe.image}
@@ -51,7 +50,6 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
               style={{ width: "100%", height: "auto" }}
               className={styles.image}
             />
-          </div>
           <Typography className={styles.summary}>
             {parser(recipe.summary)}
           </Typography>

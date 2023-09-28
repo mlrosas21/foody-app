@@ -1,11 +1,15 @@
-.itemsContainer{
-    color: black;
-    display: flex;
-    align-items: center;
-    flex: 1;
-    gap: 1rem;
+.header {
+  margin-bottom: 1rem;
+}
+
+.itemsContainer {
+  color: black;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 1rem;
 }
 
 .itemsContainer > * {
-    color: black;
+  color: black;
 }
