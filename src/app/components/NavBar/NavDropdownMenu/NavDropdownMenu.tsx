@@ -5,7 +5,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import React from "react";
 import styles from "./styles.module.css";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Link from "next/link";
 
 const NavDropdownMenu = ({
@@ -39,8 +39,13 @@ const NavDropdownMenu = ({
         disableScrollLock
       >
         {items.map((item) => (
-          <Link href={{ pathname: '/recipes/search', query: { [param]: `${item.value}` } }}>
-          <MenuItem onClick={handleClose}>{item.label}</MenuItem>
+          <Link
+            href={{
+              pathname: "/recipes/search",
+              query: { [param]: `${item.value}` },
+            }}
+          >
+            <MenuItem onClick={handleClose}>{item.label}</MenuItem>
           </Link>
         ))}
       </Menu>
