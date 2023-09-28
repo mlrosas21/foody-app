@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import RecipeGrid from "@/app/components/RecipeGrid/RecipeGrid";
@@ -15,7 +16,7 @@ const RecipeSearchPage = async () => {
     };
 
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   return (
     <RecipeGrid recipes={recipes} />

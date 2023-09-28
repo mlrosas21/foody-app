@@ -1,10 +1,11 @@
-import Link from 'next/link';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import Link from "next/link";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Box from "@mui/material/Box";
+import NavDropdownMenu from "../NavDropdownMenu/NavDropdownMenu";
+import styles from "./styles.module.css";
 
-const links = [
+const staticLinks = [
   {
     label: "Home",
     route: "/",
@@ -19,17 +20,46 @@ const links = [
   },
 ];
 
+const menuLinks = [
+  {
+    label: "Dish types",
+    param: "type",
+    items: [
+      {
+        label: "Main course",
+        value: "main course",
+      },
+      {
+        label: "Side dish",
+        value: "side dish"
+      },
+      {
+        label: "Dessert",
+        value: "dessert"
+      }
+    ],
+  },
+];
+
 const NavBar = () => {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Box display={'flex'} flexGrow={1} gap={3}>
-        {links.map(({label, route}) => (
-          <Link key={route} href={route}> {label} </Link>
-          ))}
+    <>
+      <AppBar>
+        <Toolbar>
+          <Box className={styles.itemsContainer}>
+            {staticLinks.map(({ label, route }) => (
+              <Link key={route} href={route}>
+                {label}
+              </Link>
+            ))}
+            {menuLinks.map(({ label, param, items }) => (
+              <NavDropdownMenu label={label} param={param} items={items} />
+            ))}
           </Box>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </>
   );
 };
 
