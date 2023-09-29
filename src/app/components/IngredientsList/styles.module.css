@@ -25,11 +25,3 @@
 .ingredientsList::-webkit-scrollbar-thumb {
   background-color: #000000;
 }
-
-.ingredientName {
-  color: black;
-}
-
-.ingredientAvatar > img {
-  object-fit: contain;
-}
