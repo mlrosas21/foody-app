@@ -5,19 +5,23 @@ import SocialMedia from "./SocialMedia/SocialMedia";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { PERSONAL_DATA } from "utils/personal-info";
+import { Toolbar } from "@mui/material";
 
 const Footer = () => {
   return (
-    <Box component={"footer"} className={styles.footer}>
-      {/* GitHub */}
-      <SocialMedia {...PERSONAL_DATA.GITHUB}>
-        <GitHubIcon />
-      </SocialMedia>
-      {/* LinkedIn */}
-      <SocialMedia {...PERSONAL_DATA.LINKEDIN}>
-        <LinkedInIcon />
-      </SocialMedia>
-    </Box>
+    <>
+      <Toolbar />
+      <Box component={"footer"} className={styles.footer}>
+        {/* GitHub */}
+        <SocialMedia {...PERSONAL_DATA.GITHUB}>
+          <GitHubIcon />
+        </SocialMedia>
+        {/* LinkedIn */}
+        <SocialMedia {...PERSONAL_DATA.LINKEDIN}>
+          <LinkedInIcon />
+        </SocialMedia>
+      </Box>
+    </>
   );
 };
 

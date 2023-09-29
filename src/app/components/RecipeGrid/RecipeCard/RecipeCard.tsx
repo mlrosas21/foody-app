@@ -39,7 +39,7 @@ const RecipeCard = ({ recipe }: Props) => {
   };
 
   return (
-    <Card className={styles.card}>
+    <Card className={styles.card} sx={{ bgcolor: "secondary.light" }}>
       <CardContent className={styles.cardContent}>
           <Image
             src={recipe.image}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from "react";
 import Card from "@mui/material/Card";
@@ -6,16 +6,18 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@mui/material";
 
-const SimpleRecipeCard = ({recipe}: {recipe: Recipe}) => {
+const SimpleRecipeCard = ({ recipe }: { recipe: Recipe }) => {
+  const router = useRouter();
+  const theme = useTheme();
+  
+  const handleClick = (id: number) => {
+    router.push(`/recipes/${id}`);
+  };
 
-    const router = useRouter()
-
-    const handleClick = (id: number) => {
-        router.push(`/recipes/${id}`)
-    }
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, backgroundColor: theme.palette.secondary.light}}>
       <CardActionArea onClick={() => handleClick(recipe.id)}>
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">

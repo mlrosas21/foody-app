@@ -6,7 +6,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
+import { Box, Typography } from "@mui/material";
+import { neuton } from "@/app/fonts";
 
 type Props = {
   ingredients: Ingredient[];
@@ -14,28 +16,37 @@ type Props = {
 
 const IngredientsList = ({ ingredients }: Props) => {
   return (
-    <List dense sx={{ width: '100%', maxWidth: 360, minWidth: 225, bgcolor: 'background.paper' }}>
-      {ingredients.map(async (ingredient) => {
-        const url = await getIngredientImage(`SIZE_${250}`, ingredient.image);
-        return (
-          <ListItem
-            key={ingredient.name}
-            disablePadding
-          >
-            <ListItemButton>
-              <ListItemAvatar>
-                <Avatar
-                  alt={ingredient.name}
-                  src={url}
-                  className={styles.ingredientAvatar}
+    <Box className={styles.container}>
+      <Typography variant="h5" className={neuton.className}>
+        Ingredients
+      </Typography>
+      <Typography variant="caption">
+        Keep track of your ingredients!
+      </Typography>
+      <List dense className={styles.ingredientsList}>
+        {ingredients.map(async (ingredient) => {
+          const url = await getIngredientImage(`SIZE_${250}`, ingredient.image);
+          return (
+            <ListItem key={ingredient.name} disablePadding>
+              <ListItemButton>
+                <ListItemAvatar>
+                  <Avatar
+                    alt={ingredient.name}
+                    src={url}
+                    className={styles.ingredientAvatar}
+                  />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={`${ingredient.amount} ${ingredient.unit}`}
+                  secondary={` ${ingredient.name}`}
+                  className={styles.ingredientName}
                 />
-              </ListItemAvatar>
-              <ListItemText primary={`${ingredient.amount} ${ingredient.unit}`} secondary={` ${ingredient.name}`} className={styles.ingredientName} />
-            </ListItemButton>
-          </ListItem>
-        );
-      })}
-    </List>
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
+    </Box>
   );
 };
 

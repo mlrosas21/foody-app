@@ -40,7 +40,7 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
       {/* {recipe.occasions.length > 0 && <Box className={styles.occasions}>{renderInlineList(recipe.occasions, )}</Box>} */}
 
       <Box className={styles.recipeInfo}>
-        <Box component={"section"} className={styles.recipe}>
+        <Box component={"article"} className={styles.recipe}>
             <Image
               alt={recipe.title}
               src={recipe.image}
@@ -53,7 +53,7 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
           <Typography className={styles.summary}>
             {parser(recipe.summary)}
           </Typography>
-          <Box className={styles.recipeDetails}>
+          <Box component={"section"} className={styles.recipeDetails}>
             <IngredientsList ingredients={recipe.extendedIngredients} />
             <Instructions instructions={recipe.analyzedInstructions[0].steps} />
           </Box>

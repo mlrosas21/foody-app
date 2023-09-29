@@ -3,13 +3,13 @@
 }
 
 .itemsContainer {
-  color: black;
   display: flex;
   align-items: center;
   flex: 1;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .itemsContainer > * {
-  color: black;
+  color: white;
+  font-size: 1.2rem;
 }
