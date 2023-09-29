@@ -14,8 +14,14 @@ const renderInlineList = (arr: string[], queryParam: string) => {
     <ul className={styles.inlineList}>
       {arr.map((element: string, index: number) => (
         <li key={element} className={styles.inlineList}>
-          <Link href={{ pathname: '/recipes/search', query: { [queryParam]: `${element}` } }}>{element}</Link>
-          {index < arr.length - 1 && <span> - </span>}
+          <Link
+            href={{
+              pathname: "/recipes/search",
+              query: { [queryParam]: `${element}` },
+            }}
+          >
+            {element}
+          </Link>
         </li>
       ))}
     </ul>
@@ -35,21 +41,26 @@ const RecipePage = async ({ params }: { params: { id: number } }) => {
       </Typography>
       <Typography variant="subtitle2">Credits: {recipe.creditsText}</Typography>
 
-      {recipe.dishTypes.length > 0 && <Box className={styles.occasions}>{renderInlineList(recipe.dishTypes, 'type')}</Box>}
-
-      {/* {recipe.occasions.length > 0 && <Box className={styles.occasions}>{renderInlineList(recipe.occasions, )}</Box>} */}
+      {recipe.dishTypes.length > 0 && (
+        <Box component={"span"} display={"flex"} gap={2} alignItems={"baseline"}>
+          <span>Dish types: </span>
+          <Box className={styles.dishTypes}>
+            {renderInlineList(recipe.dishTypes, "type")}
+          </Box>
+        </Box>
+      )}
 
       <Box className={styles.recipeInfo}>
         <Box component={"article"} className={styles.recipe}>
-            <Image
-              alt={recipe.title}
-              src={recipe.image}
-              width={0}
-              height={0}
-              sizes="100vw"
-              style={{ width: "100%", height: "auto" }}
-              className={styles.image}
-            />
+          <Image
+            alt={recipe.title}
+            src={recipe.image}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: "100%", height: "auto" }}
+            className={styles.image}
+          />
           <Typography className={styles.summary}>
             {parser(recipe.summary)}
           </Typography>
